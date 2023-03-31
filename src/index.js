@@ -1,7 +1,6 @@
-/* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import Demon from './Demon';
-import Magician from './Magician';
+import Demon from './demon';
+import Magician from './magician';
 import ChangeDamage from './ChangeDamage';
 
 const demon = new Demon();
