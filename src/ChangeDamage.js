@@ -1,10 +1,6 @@
 import Character from './character';
 
 export default class ChangeDamage extends Character {
-  get attack() {
-    return this.power;
-  }
-
   set attack(x) {
     switch (x) {
       case '2':
@@ -24,11 +20,15 @@ export default class ChangeDamage extends Character {
     }
   }
 
-  get stoned() {
-    return Math.round(this.power);
+  get attack() {
+    return this.power;
   }
 
-  set stoned(x) {
-    this.power -= Math.log(x) * 5;
+  set stoned(power) {
+    this.power -= Math.log(power) * 5;
+  }
+
+  get stoned() {
+    return Math.round(this.power);
   }
 }
