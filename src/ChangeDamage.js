@@ -1,34 +1,30 @@
 import Character from './character';
 
-export default class ChangeDamage extends Character {
-  set attack(x) {
-    switch (x) {
-      case '2':
-        this.power = 90;
-        break;
-      case '3':
-        this.power = 80;
-        break;
-      case '4':
-        this.power = 70;
-        break;
-      case '5':
-        this.power = 60;
-        break;
-      default:
-        throw new Error('Некорректное значение!');
-    }
-  }
-
-  get attack() {
-    return this.power;
-  }
-
-  set stoned(power) {
-    this.power -= Math.log(power) * 5;
+export default class MathCharacter extends Character {
+  constructor(name, type, distance) {
+    super(name, type);
+    this.stoned = false;
+    this.distance = distance;
+    this.attack = 10;
   }
 
   get stoned() {
-    return Math.round(this.power);
+    return this.xstoned;
+  }
+
+  set stoned(value) {
+    this.xstoned = value;
+  }
+
+  set attack(value) {
+    this.xattack = value;
+  }
+
+  get attack() {
+    let attack = this.xattack * ((11 - this.distance) / 10);
+    if (this.stoned) {
+      attack -= Math.log2(this.distance) * 5;
+    }
+    return (attack > 0) ? Math.round(attack) : 0;
   }
 }

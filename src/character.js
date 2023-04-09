@@ -1,5 +1,7 @@
 export default class Character {
-  constructor() {
-    this.power = 100;
+  constructor(name, type, power = 100) {
+    this.name = name;
+    this.type = type;
+    this.power = power;
   }
 }
